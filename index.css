@@ -244,15 +244,6 @@ textarea {
   animation: imageFloat 5.5s ease-in-out infinite, fadeIn 0.9s ease 0.12s both;
 }
 
-.hero-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.16) 50%, transparent 70%);
-  transform: translateX(-120%);
-  animation: shine 4.5s ease-in-out infinite;
-}
-
 /* About */
 .about-section {
   padding: var(--section-space) 20px;
@@ -639,18 +630,6 @@ textarea {
   }
 }
 
-@keyframes shine {
-  0%,
-  45% {
-    transform: translateX(-120%);
-  }
-
-  75%,
-  100% {
-    transform: translateX(120%);
-  }
-}
-
 @keyframes softPulse {
   0%,
   100% {
@@ -884,8 +863,9 @@ body::before {
 .hero-traits span { display: inline-flex; align-items: center; gap: 8px; }
 .hero-traits i { color: var(--accent); font-size: 15px; }
 .hero-visual { position: relative; display: grid; width: min(100%, 440px); aspect-ratio: .82; justify-self: center; place-items: center; isolation: isolate; perspective: 1100px; }
-.hero-image { z-index: 1; width: 79%; height: 88%; overflow: hidden; border: 1px solid rgba(226,242,255,.25); border-radius: 16px; background-image: linear-gradient(180deg, transparent 60%, rgba(8,11,16,.2)), url("./img/Shahil.png"); background-position: center; background-size: cover; box-shadow: 0 26px 55px rgba(0,0,0,.42); transform-style: preserve-3d; animation: portraitSpin 14s ease-in-out infinite; }
-.hero-image::before, .hero-image::after { display: none; }
+.hero-image { z-index: 1; width: 79%; height: 88%; overflow: hidden; border: 1px solid rgba(226,242,255,.25); border-radius: 16px; background-image: url("./img/Shahil.png"); background-position: center; background-size: cover; box-shadow: 0 26px 55px rgba(0,0,0,.42); transform-style: preserve-3d; animation: portraitSpin 14s ease-in-out infinite; }
+.hero-image::before { display: none; }
+.hero-image::after { position: absolute; inset: -20% -70%; display: block; border-radius: inherit; background: linear-gradient(110deg, transparent 42%, rgba(255,255,255,.04) 47%, rgba(255,255,255,.32) 50%, rgba(255,255,255,.08) 53%, transparent 59%); content: ""; opacity: .8; pointer-events: none; transform: translateX(-65%); animation: imageSheen 5.5s ease-in-out infinite; }
 
 .about-section { position: relative; padding: var(--section-space) 24px; border-block: 1px solid rgba(220,235,250,.07); background: linear-gradient(110deg, rgba(255,255,255,.025), rgba(255,255,255,.008)); }
 .about-container { position: relative; display: grid; grid-template-columns: 115px minmax(0, 850px); gap: 35px; max-width: 1120px; }
@@ -955,6 +935,10 @@ body::before {
 @keyframes portraitSpin {
   0%, 64% { transform: rotateY(0deg); }
   78%, 100% { transform: rotateY(360deg); }
+}
+@keyframes imageSheen {
+  0%, 58% { transform: translateX(-65%); }
+  82%, 100% { transform: translateX(65%); }
 }
 
 @media (max-width: 991px) {
